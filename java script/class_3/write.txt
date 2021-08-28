@@ -1,0 +1,55 @@
+This is some Demo Textthis is appended data that i want to append
+
+let fs=require('fs');
+let path=require('path');
+let Extensions={
+    Images:['.png','.jpg','.jpeg','gif'],
+    Audio:['.mp3'],
+    Documents:['.pdf','.txt','.doc'],
+    Compressed:['.zip','.rar'],
+    videos:['.mkv','.mp4']
+}
+
+function checkfolder(extension,folderpath)
+{
+    for(let key in Extensions)
+    {
+        let arr=Extensions[key];
+        //array.include check whther the value exist in array or not
+        let eon=arr.includes(extension);
+        if(eon==true)
+        {
+            //console.log(key);
+            extfolderpath=path.join(folderpath,key);
+            console.log(extfolderpath);
+            break;
+            
+        }
+        
+    }
+    return fs.existsSync(extfolderpath);
+}
+
+function createfolder()
+{
+    console.log(extfolderpath);
+    fs.mkdirSync(extfolderpath);
+}
+
+let input=process.argv.slice(2);
+//console.log(input[0]);
+let folderpath=input[0];
+let extfolderpath=folderpath;
+let content=fs.readdirSync(input[0]);
+for(let i=0;i<content.length;i++)
+{
+    //console.log(content[i]);
+    //console.log(path.extname(content[i]));
+    let extensionname=path.extname(content[i]);
+    let extensionfolderexist=checkfolder(extensionname,folderpath);
+    console.log(extensionfolderexist);
+    if(extensionfolderexist==false)
+    {
+        createfolder();
+    }
+}

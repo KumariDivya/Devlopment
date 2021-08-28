@@ -1,0 +1,15 @@
+/* external styling */
+
+/* a css selector selects the element you want to style */
+/* body elemet selector beacuse here 1 element is used */
+body{
+    background-color:black;
+    color:white;
+}
+.heading{
+    /* class selector */
+    color:grey;
+    text-align: center;
+    text-emphasis-style: bold;
+    text-decoration-style: wavy;
+}
